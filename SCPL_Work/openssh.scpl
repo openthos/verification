@@ -1,0 +1,7 @@
+{ default_action = Kill ;
+rules = [ 
+{ action = Errno_EACCES ; syscall = SYS_open } ; 
+{ action = Allow ; syscall = SYS_getpid } ; 
+{ action = Allow ; syscall = SYS_gettimeofday } 
+] 
+}
