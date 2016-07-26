@@ -51,14 +51,14 @@ module SCPL-SYNTAX
 		A RuleCodeString serves to describe the statement introducing the behavior enforced for a specific system call.
 		It contains an introductory sentence followed by a SysCode.
 	*/
-	syntax RuleCodeString ::= "syscall" "="
+	syntax SysCodeString ::= "syscall" "="
 
 	/*@
 		\subsubsection{RuleCode}
 		A RuleCode serves to describe the statement introducing the behavior enforced for a specific system call.
 		It contains an introductory sentence followed by a SysCode.
 	*/
-	syntax RuleCode ::= RuleCodeString SysCode [strict]	
+	syntax RuleCode ::= SysCodeString SysCode [strict]	
 
 	/*@
 		\subsubsection{RuleCase}
@@ -92,7 +92,7 @@ module SCPL-SYNTAX
 		The Rules element serves to introduce the list of rules with a introductory statement.
 		It is presented as a short sentence followed by an instance of RulesList.
 	*/
-	syntax Rules ::= RulesListString "[" RulesList "]" [seqstring]
+	syntax Rules ::= RulesListString "[" RulesList "]" //[seqstrict]
 
 	/*@
 		\subsubsection{DefaultRule}
@@ -113,7 +113,7 @@ module SCPL-SYNTAX
 		The Body element serves to describe the code corresponding to all the policies.
 		It contains an instance of both DefaultRule and Rules, separated by a comma.
 	*/
-	syntax Body ::= DefaultRule ";" Rules [strict(2)]
+	syntax Body ::= DefaultRule ";" Rules [strict(2 1)]
 
 	/*@
 		\subsubsection{Block}
