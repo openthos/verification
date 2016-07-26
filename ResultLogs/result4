@@ -1,0 +1,18 @@
+<k>
+rules =
+[
+	{
+		action = Errno_EACCES ; syscall = SYS_open
+	};
+	(
+		{ 
+			action = Allow ; syscall = SYS_getpid
+		};
+		(
+			{
+				action = Allow ; syscall = SYS_gettimeofday
+			};
+			.RulesList
+		)
+	)
+] ~> #freezer_;_0 ( default_action = Kill ) ~> #freezer{_}0 ( ) </k> 
