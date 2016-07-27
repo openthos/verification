@@ -40,13 +40,13 @@ module SCPL
 	//RuleCase
 	//RulesListString
 	//RulesList
-	rule R:RuleCase Rs:RulesList => R ~> Rs  [structural]
+	rule R:RuleCase ; Rs:RulesList => R ~> Rs  [structural]
 	//Rules
 
 	//DefaultRuleString
 	rule DRS:DefaultRuleString => . [structural]
 	//DefaultRule
-	rule <k> DRS:DefaultRuleString AC:ActionCode => . ...</k> <out> .List => AC </out> 
+	rule <k>... DRS:DefaultRuleString AC:ActionCode => . ...</k> <out>... .List => ListItem(AC) </out> 
 	//Body
 	rule DR:DefaultRule ; Rss:Rules => Rss ~> DR [structural]
 	//Program
@@ -56,7 +56,7 @@ module SCPL
 
 
 	//RULES NOT TREATED YET
-	rule <k>... ((R:RuleCase ); Rs => Rs ) ...</k> <store> 0 => 1 </store>//<store> I => I +Int 1 </store> [increment]
+	//rule <k>... ((R:RuleCase ); Rs => Rs ) ...</k> <store> 0 => 1 </store>//<store> I => I +Int 1 </store> [increment]
 	//rule '{' '}' => .   [structural]
 	//rule { S:RuleCase } => S  [structural]
 	//rule ( S:RulesList ) => S  [structural]
