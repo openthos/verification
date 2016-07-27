@@ -20,8 +20,8 @@ module SCPL
 		The SCPL syntax manipulates Ids, namely ActionCodes and SysCodes. Therefore we declare them as potential results, hence KResult;
 		and as potential variables, hence KVariable.
 	*/
-	syntax KResult ::= Id | Int
-	syntax KVariable ::= Id | Int | Bool
+	syntax KResult ::= Id | Int | String
+	syntax KVariable ::= Id | Int | Bool | String
 
 	configuration <T color="yellow">
 		<k color="green"> $PGM:Program </k>
@@ -44,16 +44,20 @@ module SCPL
 	//Rules
 
 	//DefaultRuleString
-	rule DRS:DefaultRuleString => . [structural]
+	//rule DRS:DefaultRuleString => . [structural]
 	//DefaultRule
-	rule <k>... DRS:DefaultRuleString AC:ActionCode => . ...</k> <out>... .List => ListItem(AC) </out> 
+
+	syntax Printable ::= Int | String | Id
+  	syntax ActionCode ::= Printable
+  	context DRS:DefaultRuleString HOLE:ActionCode
+  	rule <k>... DRS:DefaultRuleString AC:ActionCode => . ...</k> <out>... .List => ListItem(AC) </out> [print]
+
 	//Body
 	rule DR:DefaultRule ; Rss:Rules => Rss ~> DR [structural]
 	//Program
 	//rule .Program => . [structural]
 	rule { B:Body } => B [structural]
-
-
+	
 
 	//RULES NOT TREATED YET
 	//rule <k>... ((R:RuleCase ); Rs => Rs ) ...</k> <store> 0 => 1 </store>//<store> I => I +Int 1 </store> [increment]

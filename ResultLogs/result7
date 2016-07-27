@@ -1,0 +1,33 @@
+Kill
+<T>
+	<k>
+		rules = [
+			{
+				action = "Errno_EACCES" ; syscall = SYS_open
+			};
+			(
+				{
+					action = "Allow" ; syscall = SYS_getpid
+				};
+				(
+					{
+						action = "Allow" ; syscall = SYS_gettimeofday
+					};
+					.RulesList
+				)
+			)
+		]
+	</k>
+	<state>
+		.Map
+	</state>
+	<store>
+		0
+	</store>
+	<in>
+		ListItem ( #buffer ( "" ) ) ListItem ( "on" ) ListItem ( #istream ( 0 ) )
+	</in>
+	<out>
+		ListItem ( #ostream ( 1 ) ) ListItem ( "on" ) ListItem ( #buffer ( "" ) )
+	</out>
+</T>
