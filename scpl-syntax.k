@@ -23,7 +23,7 @@ module SCPL-SYNTAX
 		An ActionCode serves to describe the code corresponding to a behavior enforced for a specific system call.
 		It is presented as an Identifier in the present syntax.
 	*/
-	syntax ActionCode ::= Id	
+	syntax ActionCode ::= Id
 
 	/*@
 		\subsubsection{SysCode}
@@ -58,14 +58,14 @@ module SCPL-SYNTAX
 		A RuleCode serves to describe the statement introducing the behavior enforced for a specific system call.
 		It contains an introductory sentence followed by a SysCode.
 	*/
-	syntax RuleCode ::= SysCodeString SysCode [strict]	
+	syntax RuleCode ::= SysCodeString SysCode //[strict]	
 
 	/*@
 		\subsubsection{RuleCase}
 		A RuleCase serves to describe the entire policy corresponding to a behavior enforced for a specific system call.
 		It contains a single instance of both RuleAction and RuleCode, separated by a comma, and is enclosed between brackets.
 	*/
-	syntax RuleCase ::= "{" RuleAction ";" RuleCode "}" [strict]
+	syntax RuleCase ::= "{" RuleAction ";" RuleCode "}" //[strict]
 		//| "{" RuleCase "}" [strict, bracket]	
 
 	/*@
@@ -73,7 +73,7 @@ module SCPL-SYNTAX
 		The RulesList element describe the list of rules describing the enforced behavior corresponding to each system call.
 		It is a list of RuleCase, separated by commas and enclosed between brackets.
 	*/
-	syntax RulesList ::= List{RuleCase, ";"} [seqstrict] 
+	syntax RulesList ::= List{RuleCase, ";"} //[seqstrict] 
 		//| RulesList RuleCase
 		//| 
 		//| RuleCase
@@ -106,20 +106,20 @@ module SCPL-SYNTAX
 		The DefaultRule serves to describe the defined default behavior.
 		It is presented as an introductory sentence followed by the corresponding ActionCode.
 	*/
-	syntax DefaultRule ::= DefaultRuleString ActionCode [strict]
+	syntax DefaultRule ::= DefaultRuleString ActionCode //[strict]
 
 	/*@
 		\subsubsection{Body}
 		The Body element serves to describe the code corresponding to all the policies.
 		It contains an instance of both DefaultRule and Rules, separated by a comma.
 	*/
-	syntax Body ::= DefaultRule ";" Rules [strict(2 1)]
+	syntax Body ::= DefaultRule ";" Rules //[seqstrict(2)]
 
 	/*@
 		\subsubsection{Block}
 		The Block element serves as a container for the whole code.
 		It contains a single instance of Body, encased in brackets.
 	*/
-	syntax Program ::= "{" Body "}" [strict]	
+	syntax Program ::= "{" Body "}" //[strict]
 
 endmodule

@@ -25,40 +25,58 @@ module SCPL
 
 	configuration <T color="yellow">
 		<k color="green"> $PGM:Program </k>
-		<state color="red">  .Map</state>
-		<store color="cyan"> 0 </store>
+		<env color="red">  .Map </env>
+		<state color="cyan"> .List </state>
 		<in color="magenta" stream="stdin"> .List </in>
 		<out color="Orchid" stream="stdout"> .List </out>
 	</T>
 
+	//ActionCode
+	rule <k>... AC:ActionCode => " AC " ...</k>
+
+	//SysCode
 	//ActionCodeString
-	rule ACS:ActionCodeString => . [structural]
+	//rule ACS:ActionCodeString => .  [structural]
 	//SysCodeString
-	rule SCS:SysCodeString => . [structural]
+	//rule SCS:SysCodeString => . [structural]
+
 	//RuleAction
+
 	//RuleCode
+	rule <k>... ( ACS:ActionCodeString AC:ActionCode ) => ACS ~> AC ...</k>
+
 	//RuleCase
-	//RulesListString
+	rule <k> { RA:RuleAction ; SCS:SysCodeString SC:SysCode } => . </k> <state>... ListItem(SC:SysCode) </state>
+
 	//RulesList
-	rule R:RuleCase ; Rs:RulesList => R ~> Rs  [structural]
+	rule <k>... R:RuleCase ; Rs:RulesList => R ~> Rs ...</k>  
+	rule <k>... .RulesList => . ...</k>
+	
+	//RulesListString
+	rule <k> RLS:RulesListString => . ...</k>
+
 	//Rules
+	rule <k> RLS:RulesListString [ RL:RulesList ] => RLS ~> RL </k>
 
 	//DefaultRuleString
-	//rule DRS:DefaultRuleString => . [structural]
+	rule <k>... DRS:DefaultRuleString => . ...</k>
+	
 	//DefaultRule
-
-	syntax Printable ::= Int | String | Id
-  	syntax ActionCode ::= Printable
-  	context DRS:DefaultRuleString HOLE:ActionCode
-  	rule <k>... DRS:DefaultRuleString AC:ActionCode => . ...</k> <out>... .List => ListItem(AC) </out> [print]
-
+	rule <k>... DRS:DefaultRuleString AC:ActionCode => DRS ...</k> <out>... .List => ListItem(AC) </out>
+  		
 	//Body
 	rule DR:DefaultRule ; Rss:Rules => Rss ~> DR [structural]
-	//Program
-	//rule .Program => . [structural]
-	rule { B:Body } => B [structural]
-	
 
+	//Program
+	rule { B:Body } => B [structural]
+	rule <k> { B:Body } => B </k> <in> ListItem(SC:SysCode) => .List ...</in>  [read]
+	
+	//Printing Rules
+	//syntax Printable ::= Id
+  	//syntax ActionCode ::= Printable
+  	//context DRS:DefaultRuleString HOLE:ActionCode
+
+  	
 	//RULES NOT TREATED YET
 	//rule <k>... ((R:RuleCase ); Rs => Rs ) ...</k> <store> 0 => 1 </store>//<store> I => I +Int 1 </store> [increment]
 	//rule '{' '}' => .   [structural]
