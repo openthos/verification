@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{A certain kind of security threat}{3}{0}{1}
+\beamer@sectionintoc {2}{System call filtering}{19}{0}{2}
+\beamer@subsectionintoc {2}{1}{System call policies: BPF}{19}{0}{2}
+\beamer@subsectionintoc {2}{2}{User-friendly rules definition: SCPL}{26}{0}{2}
+\beamer@subsectionintoc {2}{3}{Policies enforcement: JITK}{32}{0}{2}
+\beamer@sectionintoc {3}{Introducing JITK}{36}{0}{3}
+\beamer@subsectionintoc {3}{1}{Overview of JITK}{36}{0}{3}
+\beamer@subsectionintoc {3}{2}{Overview of Coq}{44}{0}{3}
+\beamer@subsectionintoc {3}{3}{Inner workings of JITK}{49}{0}{3}

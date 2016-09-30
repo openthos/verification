@@ -1,0 +1,190 @@
+\documentclass{beamer}
+%\setbeamertemplate{navigation symbols}
+
+
+\usetheme{Montpellier}
+
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+\begin{document}
+\title{Towards a semantics-driven implementation of JITK, using K-framework}  
+\author{ZEGAOUI Taquyeddine}
+\date{\today} 
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}\frametitle{Table of contents}\tableofcontents
+\end{frame} 
+
+
+\section{Introducing JITK} 
+
+\subsection{Overview of JITK}
+
+\begin{frame}
+What do Bitcoin transaction scripting, network packet filtering  and power management have in common ?
+\\
+\pause
+They all make use of in-kernel interpreters !
+\end{frame}
+
+\begin{frame}\frametitle{In-kernel interpreters}
+\begin{itemize}[<+->]
+	\item In-kernel interpreters have become a staple of modern computation processes
+	\item They also have become a major concern regarding security
+	\item Risks of malicious attacks or intern errors
+	\item In-kernel interpreters run in kernel space
+	\item Any error or attack can have tremendous consequences
+ \end{itemize}
+\pause
+What can be done to guarantee safe and correct in-kernel interpreters ?
+\end{frame}
+
+\begin{frame}\frametitle{JITK: what is it ?}
+Enter JITK,
+\begin{itemize}[<+->]
+	\item An infrastructure for building in-kernel interpreters
+	\item Guarantees complete functional correctness
+	\item Uses user-defined system call policies to secure execution
+	\item Those policies define what system call the executing code can invoke
+ \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{JITK: What does it do ?}
+The system call policies are
+\begin{itemize}[<+->]
+	\item Compiled to native code to be passed to the kernel
+	\item Guaranteed to correctly translate into native code without loss of meaning
+	\item Used to determine behavior regarding every sytem call
+	\item Able to be checked by the interpreter without overhead cost
+ \end{itemize}
+\end{frame}
+
+\subsection{System call policies enforcement: BPF}
+\begin{frame}\frametitle{Introducing BPF}
+The BPF language
+\begin{itemize}[<+->]
+	\item Originally serves for defining packets filters
+	\item Is a low-level language rather close to assembly
+	\item Is used here as a system call filter
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile, shrink]\frametitle{Example of BPF}
+\begin{verbatim}
+; load syscall number
+ld [0]
+; deny open() with errno = EACCES
+jeq #SYS_open, L1, L2
+L1: ret #RET_ERRNO|#EACCES
+; allow getpid()
+L2: jeq #SYS_getpid, L3, L4
+L3: ret #RET_ALLOW
+; allow gettimeofday()
+L4: jeq #SYS_gettimeofday, L5, L6
+L5: ret #RET_ALLOW
+L6: ...
+; default: kill current process
+ret #RET_KILL
+\end{verbatim}
+\pause
+As seen above, each system call gets an entry in the list of rules, along with the expected behavior regarding this particular sytem call. A default behavior is also defined, should any system call be absent from the previous list.
+\end{frame}
+
+\subsection{User-friendly rules definition: SCPL}
+
+\begin{frame}\frametitle{Introducing SCPL}
+We introduce SCPL, a domain specific language for defining sytem call policies
+\begin{itemize}[<+->]
+	\item In a more user-friendly way, being close to natural human language
+	\item In an easier, more intuitive and less prone to errors manner
+	\item Which reduces the risk of having incorrect BPF policies
+	\item Which will be translated to BPF
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Example of SCPL}
+\begin{verbatim}
+{ default_action = Kill;
+rules = [
+{ action = Errno EACCES; syscall = SYS_open };
+{ action = Allow; syscall = SYS_getpid };
+{ action = Allow; syscall = SYS_gettimeofday };
+...
+] }
+\end{verbatim}
+\pause
+As seen above, SCPL is really close to the natural thought process of defining the rules of sytem call behavior, and this intuitive ease of use guarantees minimal errors within policies definition.
+\end{frame}
+
+
+
+\section{Introducing K-framework}
+ 
+\subsection{Overview of K-framework}
+\begin{frame}{Languages implementations}
+\begin{itemize}[<+->]
+	\item Too many languages have only vague semantics defined in incomplete manuals
+	\item Several implementations can exist for a single language
+	\item Some or even all implementations often rely on ad-hoc intuition of said language semantics
+	\item Results in formally wrong implementations, with possibly terrrible results
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Introducing K-framework}
+Enter K-framework, a semantic framework
+\begin{itemize}[<+->]
+	\item Allowing implementations to be strict applications of syntax and semantics
+	\item Guaranteeing clean, ambuigity-free implementations conform to specifications
+	\item Eliminating errors stemming from approximative implementations
+\end{itemize}
+\end{frame}
+
+\subsection{K-framework function and role}
+\begin{frame}\frametitle{Producing formally proven implementations}
+K-framework is able to generate languages implementations
+\begin{itemize}[<+->]
+	\item Which correctness is guaranteed by the use of Coq and OCaml
+	\item Completely trustworthy and free of errors
+	\item Which can be used to define compilers between defined languages
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Only by defining syntax and semantics}
+To generate such language implementations, we only need to define its syntax and semantics, split into three components
+\begin{itemize}[<+->]
+	\item Configurations: descriptions of the program state using nested cells
+	\item Computations: sequences of computational tasks as nested lists
+	\item Rules are a generalisation of conventional rewrite rules
+\end{itemize}
+\end{frame}
+
+
+\section{Present work objectives} 
+\begin{frame}\frametitle{Ongoing progress} 
+Ongoing : definition and implementation of SCPL and BPF using K-framework.
+Planned: definition and implementation of an SCPL to BPF compiler using K-framework.
+\end{frame}
+
+\section{}
+\begin{frame}
+Thank you for your attention ! Any questions ?
+\end{frame}
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{Further Reading}    
+  \begin{thebibliography}{10}    
+  \beamertemplatearticlebibitems
+  \bibitem{}
+    Xi Wang, David Lazar, Nickolai Zeldovich, Adam Chlipala, Zachary Tatlock
+    \newblock Jitk: A Trustworthy In-Kernel Interpreter Infrastructure.
+    \newblock 11th USENIX Symposium on Operating Systems Design and Implementation, 2014.
+  \beamertemplatearticlebibitems
+  \bibitem{}
+    Grigore Rosu, Traian Florin Serbanuta
+    \newblock An Overview of the K Semantic Framework
+    \newblock J.LAP, 2010.
+  \end{thebibliography}
+\end{frame}
+
+
+\end{document}

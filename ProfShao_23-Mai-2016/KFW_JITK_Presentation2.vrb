@@ -1,0 +1,12 @@
+\frametitle{Example of SCPL}
+\begin{verbatim}
+{ default_action = Kill;
+rules = [
+{ action = Errno EACCES; syscall = SYS_open };
+{ action = Allow; syscall = SYS_getpid };
+{ action = Allow; syscall = SYS_gettimeofday };
+...
+] }
+\end{verbatim}
+\pause
+As seen above, SCPL is really close to the natural thought process of defining the rules of sytem call behavior, and this intuitive ease of use guarantees minimal errors within policies definition.

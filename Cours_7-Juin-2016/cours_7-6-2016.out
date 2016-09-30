@@ -1,0 +1,10 @@
+\BOOKMARK [2][]{Outline0.1}{Introduction}{}% 1
+\BOOKMARK [3][]{Outline0.1.1.3}{A certain kind of security threat}{Outline0.1}% 2
+\BOOKMARK [2][]{Outline0.2}{System call filtering}{}% 3
+\BOOKMARK [3][]{Outline0.2.1.19}{System call policies: BPF}{Outline0.2}% 4
+\BOOKMARK [3][]{Outline0.2.2.26}{User-friendly rules definition: SCPL}{Outline0.2}% 5
+\BOOKMARK [3][]{Outline0.2.3.32}{Policies enforcement: JITK}{Outline0.2}% 6
+\BOOKMARK [2][]{Outline0.3}{Introducing JITK}{}% 7
+\BOOKMARK [3][]{Outline0.3.1.36}{Overview of JITK}{Outline0.3}% 8
+\BOOKMARK [3][]{Outline0.3.2.44}{Overview of Coq}{Outline0.3}% 9
+\BOOKMARK [3][]{Outline0.3.3.49}{Inner workings of JITK}{Outline0.3}% 10

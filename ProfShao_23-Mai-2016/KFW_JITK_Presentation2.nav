@@ -1,0 +1,54 @@
+\beamer@endinputifotherversion {3.36pt}
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\sectionentry {1}{Introducing JITK}{3}{Introducing JITK}{0}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Overview of JITK}}\headcommand {\beamer@subsectionpages {3}{2}}
+\headcommand {\slideentry {1}{1}{1}{3/4}{Overview of JITK}{0}}
+\headcommand {\beamer@framepages {3}{4}}
+\headcommand {\slideentry {1}{1}{2}{5/11}{Overview of JITK}{0}}
+\headcommand {\beamer@framepages {5}{11}}
+\headcommand {\slideentry {1}{1}{3}{12/15}{Overview of JITK}{0}}
+\headcommand {\beamer@framepages {12}{15}}
+\headcommand {\slideentry {1}{1}{4}{16/19}{Overview of JITK}{0}}
+\headcommand {\beamer@framepages {16}{19}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{20}{System call policies enforcement: BPF}}\headcommand {\beamer@subsectionpages {3}{19}}
+\headcommand {\slideentry {1}{2}{1}{20/22}{System call policies enforcement: BPF}{0}}
+\headcommand {\beamer@framepages {20}{22}}
+\headcommand {\slideentry {1}{2}{2}{23/24}{System call policies enforcement: BPF}{0}}
+\headcommand {\beamer@framepages {23}{24}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{25}{User-friendly rules definition: SCPL}}\headcommand {\beamer@subsectionpages {20}{24}}
+\headcommand {\slideentry {1}{3}{1}{25/28}{User-friendly rules definition: SCPL}{0}}
+\headcommand {\beamer@framepages {25}{28}}
+\headcommand {\slideentry {1}{3}{2}{29/30}{User-friendly rules definition: SCPL}{0}}
+\headcommand {\beamer@framepages {29}{30}}
+\headcommand {\sectionentry {2}{Introducing K-framework}{31}{Introducing K-framework}{0}}
+\headcommand {\beamer@sectionpages {3}{30}}
+\headcommand {\beamer@subsectionpages {25}{30}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{31}{Overview of K-framework}}\headcommand {\beamer@subsectionpages {31}{30}}
+\headcommand {\slideentry {2}{1}{1}{31/34}{Overview of K-framework}{0}}
+\headcommand {\beamer@framepages {31}{34}}
+\headcommand {\slideentry {2}{1}{2}{35/37}{Overview of K-framework}{0}}
+\headcommand {\beamer@framepages {35}{37}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{38}{K-framework function and role}}\headcommand {\beamer@subsectionpages {31}{37}}
+\headcommand {\slideentry {2}{2}{1}{38/40}{K-framework function and role}{0}}
+\headcommand {\beamer@framepages {38}{40}}
+\headcommand {\slideentry {2}{2}{2}{41/43}{K-framework function and role}{0}}
+\headcommand {\beamer@framepages {41}{43}}
+\headcommand {\sectionentry {3}{Present work objectives}{44}{Present work objectives}{0}}
+\headcommand {\beamer@sectionpages {31}{43}}
+\headcommand {\beamer@subsectionpages {38}{43}}
+\headcommand {\slideentry {3}{0}{1}{44/44}{}{0}}
+\headcommand {\beamer@framepages {44}{44}}
+\headcommand {\slideentry {4}{0}{1}{45/45}{}{0}}
+\headcommand {\beamer@framepages {45}{45}}
+\headcommand {\slideentry {4}{0}{2}{46/46}{}{0}}
+\headcommand {\beamer@framepages {46}{46}}
+\headcommand {\beamer@partpages {1}{46}}
+\headcommand {\beamer@subsectionpages {45}{46}}
+\headcommand {\beamer@sectionpages {45}{46}}
+\headcommand {\beamer@documentpages {46}}
+\headcommand {\def \inserttotalframenumber {17}}
