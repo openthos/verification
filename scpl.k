@@ -21,7 +21,7 @@ module SCPL
 		and as potential variables, hence KVariable.
 	*/
 	syntax KResult ::= Id | Int | String
-	syntax KVariable ::= Id | Int | Bool | String
+	//syntax KVariable ::= Id | Int | Bool | String
 
 	configuration <T color="yellow">
 		<k color="green"> $PGM:Program </k>
@@ -68,8 +68,8 @@ module SCPL
 	rule DR:DefaultRule ; Rss:Rules => Rss ~> DR [structural]
 
 	//Program
-	rule { B:Body } => B [structural]
-	rule <k> { B:Body } => B </k> <in> ListItem(SC:SysCode) => .List ...</in>  [read]
+	//rule { B:Body } => B [structural]
+	rule <k> { B:Body } => B </k> <in> ListItem(SC:Id) => .List ...</in>  [read]
 	
 	//Printing Rules
 	//syntax Printable ::= Id
