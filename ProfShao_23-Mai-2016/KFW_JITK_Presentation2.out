@@ -1,8 +1,0 @@
-\BOOKMARK [2][]{Outline0.1}{Introducing JITK}{}% 1
-\BOOKMARK [3][]{Outline0.1.1.3}{Overview of JITK}{Outline0.1}% 2
-\BOOKMARK [3][]{Outline0.1.2.20}{System call policies enforcement: BPF}{Outline0.1}% 3
-\BOOKMARK [3][]{Outline0.1.3.25}{User-friendly rules definition: SCPL}{Outline0.1}% 4
-\BOOKMARK [2][]{Outline0.2}{Introducing K-framework}{}% 5
-\BOOKMARK [3][]{Outline0.2.1.31}{Overview of K-framework}{Outline0.2}% 6
-\BOOKMARK [3][]{Outline0.2.2.38}{K-framework function and role}{Outline0.2}% 7
-\BOOKMARK [2][]{Outline0.3}{Present work objectives}{}% 8
